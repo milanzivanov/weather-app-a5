@@ -1,0 +1,76 @@
+<!--The content below is only a placeholder and can be replaced.-->
+
+<div class="search-box">
+    <div class="wrapper">
+        <div class="search-box-wrapper">
+            <div class="search-box-wrapper_button">
+                <div class="search-box__botton"
+                          *ngFor="let item of result;
+                                  let i = index">
+                    <div class="search-box__botton--tab">
+                        <span>{{i+1}} - {{ item.cityName }}
+                            <i (click)="removeItem(i)">X</i>
+                        </span>
+                    </div>
+                </div>
+                <!-- input serch space -->
+                <div class="search-box__imput">
+                  <input class="search-input"
+                         type="text"
+                         (keypress)="eventHandler($event)"
+                         [(ngModel)]="cityName"
+                         [disabled]="disableInput"
+                         placeholder="Search Cities"/>
+              </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="alert-msg"
+     *ngIf="result.length >= 3; else otherTmpl">
+    Just three cities alowed!!!
+</div>
+<ng-template #otherTmpl>
+  <div class="alert-msg"
+       [ngClass]="'active'">
+    Type three cities
+  </div>
+</ng-template>
+
+<div class="container">
+    <div class="wrapper">
+        <div class="wrapper-container">
+            <div class="weather-box"
+                 *ngFor="let item of result;
+                         let i = index">
+              <div class="weather-box_content">
+                <div class="content-box">
+                  <div class="box">
+                    <h3>{{ item.cityName }}</h3>
+                  </div>
+                  <div class="box">
+                    <span>{{ item.temp }}<sup>&deg;C</sup></span>
+                  </div>
+                  <div class="box">
+                    <p>Humidity: {{ item.humid }}%</p>
+                  </div>
+                </div>
+                <div class="content-box">
+                    <div class="box">
+                        <h5>{{ item.date }}</h5>
+                    </div>
+                    <div class="box">
+                        <span>
+                            <img src='http://openweathermap.org/img/w/{{item.icon}}.png' alt="icon" />
+                        </span>
+                    </div>
+                    <div class="box">
+                        <p>wind: {{item.wind}}km/h</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+          </div>
+    </div>
+</div>

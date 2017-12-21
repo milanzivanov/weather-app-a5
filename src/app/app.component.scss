@@ -1,0 +1,190 @@
+/* ----------------- Media queris
+----------------------------------------------------------------------- */
+
+@mixin breakpoint ($point) {
+  @if $point == 'mobile' {
+      @media only screen and (min-width: 120px) and (max-width : 767px) { @content; }
+  }
+
+  @else if $point == 'tablet' {
+      @media only screen and (min-width: 768px) and (max-width : 1023px) { @content; }
+  }
+
+  @else if $point == 'desktop' {
+      @media only screen and (min-width: 1024px) { @content; }
+  }
+
+  @else {
+      @media only screen and (min-width: $point) { @content; }
+  }
+}
+
+// main scss
+.search-box {
+    width: 100%;
+    float: left;
+    background-color: #00ae7b;
+    background: linear-gradient(45deg,#00ae7b,#0081bf);
+}
+.wrapper {
+    max-width: 1200px;
+    margin: 0 auto;
+  @include breakpoint('tablet') {
+      max-width: 100%;
+  }
+  @include breakpoint('mobile') {
+      max-width: 100%;
+  }
+}
+
+.search-box-wrapper {
+    padding: 10px 0;
+    display: flex;
+    justify-content: center;
+}
+
+.search-box-wrapper_button {
+    display: flex;
+    background-color: #fff;
+    padding: 5px;
+    @include breakpoint('tablet') {
+        flex-direction: column;
+        width: 100%;
+    }
+    @include breakpoint('mobile') {
+      flex-direction: column;
+      width: 100%;
+    }
+}
+
+.search-box__botton {
+    display: flex;
+    background-color: #2988c6;
+    cursor: pointer;
+    padding: 0 10px;
+    margin-right: 5px;
+    @include breakpoint('tablet') {
+      padding: 10px 10px;
+      margin: 0;
+      margin-bottom: 5px;
+    }
+    @include breakpoint('mobile') {
+      margin: 0;
+      padding: 15px 10px;
+      margin-bottom: 5px;
+    }
+}
+
+.search-box__botton--tab {
+    flex: 1;
+    display: flex;
+    cursor: pointer;
+    height: 100%;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+  i {
+      color: indianred;
+  }
+  span {
+      color: #fff;
+  }
+}
+
+.search-input {
+    display: flex;
+    padding: 15px 10px 15px 25px;;
+    position: relative;
+    color: rgba(0, 0, 0, 0.5);
+    outline: none;
+    border: none;
+    min-width: 500px;
+    @include breakpoint('tablet') {
+      width: 100%;
+    }
+    @include breakpoint('mobile') {
+      width: 100%;
+    }
+}
+
+.search-box__imput {
+    display: flex;
+}
+
+.wrapper-container {
+    display: flex;
+    width: 100%;
+    flex-wrap: wrap;
+}
+
+.weather-box {
+    flex: 1 1 32%;
+    padding: 10px;
+    margin: 5px;
+    background-color: #e5e5e5;
+    display: flex;
+    align-items: center;
+    @include breakpoint('tablet') {
+      flex: 1 1 100%;
+    }
+    @include breakpoint('mobile') {
+      flex: 1 1 100%;
+    }
+}
+
+.weather-box_content {
+    display: flex;
+    width: 100%;
+    flex-direction: column;
+}
+
+.content-box {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: start;
+}
+
+.box {
+    flex: 1;
+    h3, h5 {
+      color: #333;
+    }
+    span {
+      font-size: 1.3em;
+      display: flex;
+    }
+}
+
+.content-box > .box:nth-child(2) {
+    padding-left: 20px;
+    @include breakpoint('tablet') {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+    @include breakpoint('mobile') {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+}
+
+.alert-msg {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: indianred;
+    padding: 10px 0;
+}
+
+.active { color: springgreen }
+
+.container {
+    width: 100%;
+    float: left;
+}
+
+
+
