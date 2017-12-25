@@ -15,11 +15,8 @@ export class AppComponent implements OnInit {
     showHide = false;
     disableInput = false;
 
-    cityNameTemp: number;
     main: RootObject;
     cityName: string;
-    cityNameHumi: number;
-    cityWeatherImg: string;
 
     result: { cityName: string,
               temp: number,
